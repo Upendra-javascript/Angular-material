@@ -1,0 +1,57 @@
+<div class="container">
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+      <!-- we can change the color by using color="primary" to the above tag -->
+  </mat-form-field>
+
+</div>
+
+
+
+<!--setting the selected date -->
+
+<mat-form-field>
+  <input matInput [matDatepicker]="picker1" placeholder="Angular forms" [formControl]="date">
+  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+  <mat-datepicker #picker1></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="picker2" placeholder="Angular forms" [formControl]="serializedDate">
+  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+  <mat-datepicker #picker2></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="picker3" placeholder="Value binding" [value]="date.value">
+  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+  <mat-datepicker #picker3></mat-datepicker>
+</mat-form-field>
+
+<!-- end of setting selected date -->
+<br>
+
+<!-- min and  max validation to date -->
+<mat-form-field>
+  <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker4" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+  <mat-datepicker #picker4></mat-datepicker>
+</mat-form-field>
+<!-- end of validation to date -->
+<br>
+
+<!-- datepicker and changeevents -->
+<mat-form-field>
+  <input matInput [matDatepicker]="picker6" placeholder="Input & change events"
+  (dateInput)="addEvent('input',$event)" (dateChange)="addEvent('change',$event)">
+  <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+  <mat-datepicker #picker6></mat-datepicker>
+</mat-form-field>
+
+<div class="example-events">
+  <div *ngFor="let e of events">{{e}}</div>
+</div>
+<!-- end of datepicker and changevents -->

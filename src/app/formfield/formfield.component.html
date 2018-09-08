@@ -1,0 +1,140 @@
+Basic form
+<div class="example-container">
+
+  <mat-form-field>
+    <input matInput placeholder="Input">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <textarea matInput placeholder="Textarea"></textarea>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-select placeholder="select">
+    <mat-option value="option">option</mat-option>
+  </mat-select>
+  </mat-form-field>
+
+</div>
+
+<br>
+form with legacy and standards apperance
+<p>
+  <mat-form-field apperance="legacy">
+    <mat-label>Legacy form field</mat-label>
+    <input matInput placeholder="Placeholder">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+  <br>
+  <mat-form-field apperance="standard">
+      <mat-label>Standard form field</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+  <br>
+  <mat-form-field apperance="fill">
+      <mat-label>Fill form field</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+  <br>
+  <mat-form-field apperance="outline">
+      <mat-label>Outline form field</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+  <br>
+
+</p>
+
+<!-- formfield with label -->
+<div class="example-container">
+  <form class="example-container" [formGroup]="optionForm">
+    <mat-checkbox formControlName="hideRequired">Hide required marker</mat-checkbox>
+<div>
+<label>Float label:</label>
+<mat-radio-group formControlName="floatLabel">
+  <mat-radio-button value="auto">Auto</mat-radio-button>
+  <mat-radio-button value="always">Always</mat-radio-button>
+  <mat-radio-button value="never">never</mat-radio-button>
+</mat-radio-group>
+</div>
+</form>
+
+<mat-form-field [hideRequiredMarker]="optionForm.value.hideRequired"
+[floatLabel]="optionForm.value.floatlabel">
+<input matInput placeholder="Simple placeholder" required>
+</mat-form-field>
+<br>
+<mat-form-field [floatLabel]="optionForm.value.hideRequied">
+  <mat-label>Both a label and a placeholder</mat-label>
+  <input matInput placeholder="Simple placeholder">
+</mat-form-field>
+<br>
+
+<mat-form-field [hideRequiredMarker]="optionForm.value.hideRequired"
+[floatLabel]="optionForm.value.floatlabel">
+<mat-select requied>
+  <mat-option>--None</mat-option>
+  <mat-option value="option">Option</mat-option>
+</mat-select>
+<mat-label>
+  <mat-icon>favorite</mat-icon>
+  <b>Fancy</b>
+  <i>label</i>
+</mat-label>
+</mat-form-field>
+</div>
+<!-- end of formfield with label -->
+<br>
+<!-- formfield with hint label -->
+FORMFIELD WITH MAX 
+<br>
+<div class="example-container">
+  <mat-form-field hintLabel="max 10 characters">
+    <input matInput #input maxlength="10" placeholder="Enter some input">
+    <mat-hint align="end">{{input.value?.length  || 0}}/10</mat-hint>
+  </mat-form-field>
+
+  <br>
+  <mat-form-field>
+    <mat-select placeholder="Select me">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+    <mat-hint align="end">Here's the dropdown arrow</mat-hint>
+  </mat-form-field>
+</div>
+
+<br>
+<!-- error message formfield -->
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Enter your email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+</div>
+<!-- end of message formfield -->
+
+<br>
+<!-- password field -->
+password field
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Please enter your password" [type]="hide ? 'password':'text'">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide?'visibility':'visibility_off'}}</mat-icon>
+  </mat-form-field>
+</div>
+
+<!-- custom form field -->
+custom form-field  theming means adding color
+
+<form class="example-container" [formGroup]="options" [style.fontSize.px]="getFontSize()">
+  <mat-form-field [color]="options.value.color">
+     <mat-select placeholder="color" formControlName="color">
+       <mat-option value="primary">Primary</mat-option>
+       <mat-option value="accent">Accent</mat-option>
+       <mat-option value="warn">Warn</mat-option>
+     </mat-select>
+  </mat-form-field>
+
+</form>
